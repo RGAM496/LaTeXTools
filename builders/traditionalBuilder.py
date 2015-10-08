@@ -99,7 +99,8 @@ class TraditionalBuilder(PdfBuilder):
 		if engine != self.engine:
 			self.display("Engine: " + self.engine + " -> " + engine + ". ")
 			
-		cmd[3] = cmd[3].replace("%E", engine)
+		for i in range(len(cmd)):
+			cmd[i] = cmd[i].replace("%E", engine)
 
 		# texify wants the .tex extension; latexmk doesn't care either way
 		yield (cmd + [self.tex_name], "Invoking " + cmd[0] + "... ")
